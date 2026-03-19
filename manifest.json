@@ -8,10 +8,11 @@
   "description": "Journal diary with mood tracking, supportive messages, and family sync.",
   "icons": [
     {
-      "src": "logo.svg",
+      "src": "logo.png",
       "sizes": "512x512",
-      "type": "image/svg+xml",
+      "type": "image/png",
       "purpose": "any"
     }
   ]
 }
+
