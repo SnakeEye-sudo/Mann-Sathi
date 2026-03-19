@@ -1,0 +1,18 @@
+{
+  "name": "Mann Sathi",
+  "short_name": "Mann",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#1f1423",
+  "theme_color": "#1f1423",
+  "description": "Journal diary with mood tracking, supportive messages, and family sync.",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
+
