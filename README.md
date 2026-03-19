@@ -1,4 +1,4 @@
-# Mann Sathi
+﻿# Mann Sathi
 
 ## About
 
@@ -9,6 +9,12 @@ Journal, mood tracking, and supportive daily reflection app for the Sathi family
 - GitHub repo: https://github.com/SnakeEye-sudo/Mann-Sathi
 - Tags: sathi-family, journal-app, mood-tracker, wellbeing, pwa, hindi-app
 
+<!-- app-screenshot:start -->
+## App Screenshot
+
+![App screenshot](docs/preview.png)
+
+<!-- app-screenshot:end -->
 ## Creator
 
 Built and originally created by **Er. Sangam Krishna** ([SnakeEye-sudo](https://github.com/SnakeEye-sudo)).
@@ -24,3 +30,4 @@ Built and originally created by **Er. Sangam Krishna** ([SnakeEye-sudo](https://
 This repository uses the **MIT License** with a required **NOTICE** file.
 That means collaboration is allowed, but copyright and attribution notices must stay preserved.
 See [LICENSE](LICENSE), [NOTICE](NOTICE), and [CONTRIBUTING.md](CONTRIBUTING.md).
+
