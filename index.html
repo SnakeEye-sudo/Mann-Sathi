@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1f1423">
+  <meta name="description" content="Mann Sathi ek journal diary app hai jisme mood tracking, supportive morning-night messages, aur cloud-ready entries milti hain.">
+  <title>Mann Sathi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="night">
+  <div class="ambient-layer">
+    <div class="ambient-orb orb-a"></div>
+    <div class="ambient-orb orb-b"></div>
+    <div class="ambient-grid"></div>
+    <div class="ambient-noise"></div>
+  </div>
+
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-card">
+      <div class="drawer-head">
+        <div><p class="eyebrow" data-i18n="menuLabel">Quick Controls</p><h2 data-i18n="menuTitle">Mann menu</h2></div>
+        <button class="icon-btn" id="closeDrawerBtn" type="button" aria-label="Close menu">×</button>
+      </div>
+      <div class="drawer-grid">
+        <section class="menu-panel">
+          <p class="eyebrow" data-i18n="languageLabel">Language</p>
+          <h3 data-i18n="languageTitle">Hindi aur English</h3>
+          <div class="toggle-row"><button class="mini-toggle" id="langHiBtn" type="button">हिन्दी</button><button class="mini-toggle" id="langEnBtn" type="button">English</button></div>
+        </section>
+        <section class="menu-panel">
+          <p class="eyebrow" data-i18n="themeLabel">Theme</p>
+          <h3 data-i18n="themeTitle">Mood studio mode</h3>
+          <button class="menu-btn" id="themeBtn" type="button" data-i18n="themeAction">Theme badlo</button>
+        </section>
+        <section class="menu-panel">
+          <p class="eyebrow" data-i18n="installLabel">Install</p>
+          <h3 data-i18n="installTitle">App ko phone par rakho</h3>
+          <button class="menu-btn" id="installBtn" type="button" data-i18n="installAction">Install app</button>
+        </section>
+        <section class="menu-panel">
+          <p class="eyebrow" data-i18n="authLabel">Family login</p>
+          <h3 data-i18n="authTitle">Ek login, poori family</h3>
+          <p class="muted small-copy" id="authStateText" data-i18n="authLoading">Login status load ho raha hai...</p>
+          <button class="menu-btn" id="authBtn" type="button" data-i18n="authSignIn">Login with Google</button>
+        </section>
+        <section class="menu-panel">
+          <p class="eyebrow" data-i18n="messageSettingsLabel">Messages</p>
+          <h3 data-i18n="messageSettingsTitle">Morning &amp; night timing</h3>
+          <label class="field-label" for="morningTimeInput" data-i18n="morningTimeLabel">Morning time</label>
+          <input id="morningTimeInput" class="text-input" type="time" value="07:00">
+          <label class="field-label" for="nightTimeInput" data-i18n="nightTimeLabel">Night time</label>
+          <input id="nightTimeInput" class="text-input" type="time" value="22:00">
+          <button class="menu-btn" id="saveScheduleBtn" type="button" data-i18n="saveSchedule">Save schedule</button>
+          <p class="muted small-copy" id="scheduleStatus"></p>
+        </section>
+        <section class="menu-panel menu-panel-wide">
+          <p class="eyebrow" data-i18n="pagesLabel">Pages</p>
+          <h3 data-i18n="pagesTitle">Family links aur info</h3>
+          <div class="menu-links">
+            <a href="about.html" data-i18n="pageAbout">About</a>
+            <a href="resources.html" data-i18n="pageResources">Resources</a>
+            <a href="contact.html" data-i18n="pageContact">Contact</a>
+            <a href="privacy-policy.html" data-i18n="pagePrivacy">Privacy Policy</a>
+            <a href="terms.html" data-i18n="pageTerms">Terms &amp; Conditions</a>
+            <a href="https://snakeeye-sudo.github.io/Aapka-Sathi/" data-i18n="pageFamily">Aapka-Sathi Family</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </aside>
+
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-top">
+        <div class="brand-wrap">
+          <img src="logo.svg" alt="Mann Sathi logo" class="brand-logo">
+          <div><p class="hero-tag" data-i18n="brandTag">Journal comfort desk</p><h1>Mann Sathi</h1></div>
+        </div>
+        <button class="hamburger-btn" id="openDrawerBtn" type="button" aria-label="Open menu"><span></span><span></span><span></span></button>
+      </div>
+      <div class="hero-grid">
+        <section class="hero-copy">
+          <a class="family-chip" href="https://snakeeye-sudo.github.io/Aapka-Sathi/" data-i18n="familyChip">Aapka-Sathi family ka hissa</a>
+          <h2 class="hero-headline" data-i18n="heroHeadline">Roz ka dil halka karo, mood samjho, aur pyare non-repeating messages ke saath din shuru aur khatam karo.</h2>
+          <p class="hero-text" data-i18n="heroText">Journal entry, local mood analysis, aur supportive best-friend style messages bina kisi external API ke yahin generate hote hain.</p>
+          <div class="hero-badges" id="heroBadges"></div>
+        </section>
+        <section class="hero-side">
+          <div class="metric-card"><p class="eyebrow" data-i18n="entryLabel">Journal entries</p><h3 id="entryHeadline">--</h3><strong id="entryValue">--</strong><p class="muted" id="entryMeta">--</p></div>
+          <div class="metric-card"><p class="eyebrow" data-i18n="moodLabel">Mood pulse</p><h3 id="moodHeadline">--</h3><p class="muted" id="moodMeta">--</p></div>
+        </section>
+      </div>
+    </header>
+
+    <main class="app-grid">
+      <section class="panel panel-main">
+        <div class="tabbar" id="modeTabs"></div>
+
+        <section class="tool-view active" id="view-dashboard">
+          <div class="utility-grid">
+            <article class="utility-card">
+              <div class="section-head"><div><p class="eyebrow" data-i18n="todayMessageLabel">Today's message</p><h3 data-i18n="todayMessageTitle">Warm start, gentle close</h3></div></div>
+              <div class="message-card" id="messageCard"></div>
+            </article>
+            <article class="utility-card compact-card">
+              <div class="section-head tight"><div><p class="eyebrow" data-i18n="trendLabel">Mood trend</p><h3 data-i18n="trendTitle">Recent 7 entries</h3></div></div>
+              <div id="trendList"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="tool-view" id="view-journal">
+          <article class="utility-card">
+            <div class="section-head"><div><p class="eyebrow" data-i18n="journalLabel">Journal</p><h3 data-i18n="journalTitle">Aaj ka page likho</h3></div></div>
+            <label class="field-label" for="voiceSelect" data-i18n="voiceLabel">You are</label>
+            <select id="voiceSelect" class="text-input">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+            <label class="field-label" for="entryTitleInput" data-i18n="entryTitleLabel">Entry title</label>
+            <input id="entryTitleInput" class="text-input" type="text" maxlength="80">
+            <label class="field-label" for="entryBodyInput" data-i18n="entryBodyLabel">Entry body</label>
+            <textarea id="entryBodyInput" class="journal-textarea"></textarea>
+            <button class="menu-btn age-btn" id="saveEntryBtn" type="button" data-i18n="saveEntry">Save entry</button>
+            <p class="muted" id="entryStatus"></p>
+          </article>
+        </section>
+
+        <section class="tool-view" id="view-messages">
+          <div class="utility-grid">
+            <article class="utility-card">
+              <div class="section-head"><div><p class="eyebrow" data-i18n="messageBankLabel">Message engine</p><h3 data-i18n="messageBankTitle">Non-repeating supportive stock</h3></div></div>
+              <div class="detail-grid" id="messageStats"></div>
+            </article>
+            <article class="utility-card compact-card">
+              <div class="section-head tight"><div><p class="eyebrow" data-i18n="previewLabel">Preview</p><h3 data-i18n="previewTitle">Next morning line</h3></div></div>
+              <div class="message-card" id="previewCard"></div>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <aside class="panel panel-side">
+        <section class="side-section">
+          <div class="section-head tight"><div><p class="eyebrow" data-i18n="entriesListLabel">Entries</p><h3 data-i18n="entriesListTitle">Recent pages</h3></div></div>
+          <div class="history-list" id="entriesList"></div>
+        </section>
+        <section class="side-section">
+          <div class="section-head tight"><div><p class="eyebrow" data-i18n="profileLabel">Profile</p><h3 data-i18n="profileTitle">Mood setup</h3></div></div>
+          <div class="stack-card" id="profileSummary"></div>
+        </section>
+      </aside>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <img src="logo.svg" alt="Mann Sathi logo">
+        <div><strong>Mann Sathi</strong><p data-i18n="footerNote">Roz ke ehsaas ko safe jagah dene ke liye.</p></div>
+      </div>
+      <p class="footer-credit">Crafted and developed by <strong>Er. Sangam Krishna</strong>.</p>
+    </footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
