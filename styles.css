@@ -507,3 +507,29 @@ h1, h2, h3 {
   .swap-btn { height: 46px; }
   .detail-grid { grid-template-columns: 1fr; }
 }
+
+/* Sathi mobile drawer hotfix */
+.drawer {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.drawer-card {
+  max-height: calc(100dvh - 24px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+@media (max-width: 720px) {
+  .drawer {
+    align-items: flex-start;
+    justify-content: center;
+    padding: 12px;
+  }
+
+  .drawer-card {
+    width: 100%;
+    margin: 0;
+  }
+}

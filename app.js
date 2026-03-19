@@ -588,13 +588,24 @@
       }
     }
     function bindEvents() {
-      $("openDrawerBtn").addEventListener("click", () => {
+      const openDrawer = () => {
         $("drawer").classList.add("open");
         $("drawer").setAttribute("aria-hidden", "false");
-      });
-      $("closeDrawerBtn").addEventListener("click", () => {
+      };
+      const closeDrawer = () => {
         $("drawer").classList.remove("open");
         $("drawer").setAttribute("aria-hidden", "true");
+      };
+      $("openDrawerBtn").addEventListener("click", openDrawer);
+      $("closeDrawerBtn").addEventListener("click", closeDrawer);
+      $("drawer").addEventListener("click", (event) => {
+        if (event.target === $("drawer")) closeDrawer();
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeDrawer();
+      });
+      document.querySelectorAll("#drawer a").forEach((link) => {
+        link.addEventListener("click", closeDrawer);
       });
       $("themeBtn").addEventListener("click", () => setTheme(state.theme === "night" ? "dawn" : "night"));
       $("langHiBtn").addEventListener("click", () => setLanguage("hi"));
